@@ -26,9 +26,13 @@ Also, take note that Ollama is being exposed for API calls at the API of the mac
 
 # Common Questions
 
-Why not resolve any intermiten DNS issues in the cluster instead of calling for `dnsPolicy: "None"`?  Where's the PV/PVC?  Why use `nodeName' instead of setting up affinities?
+* Why not resolve any intermiten DNS issues in the cluster instead of calling for `dnsPolicy: "None"`?  Where's the PV/PVC?  Why use `nodeName' instead of setting up affinities?
 
-All great questions, of which I didn't have time to setup originally.  Please feel free to make your own tweaks, or open up a branch.
+    All great questions, of which I didn't have time to setup originally.  Please feel free to make your own tweaks, or open up a branch.
+
+* What Nvidia drivers did you install?
+
+    From the link in step 1, I used `sudo ubuntu-drivers install` and let Ubuntu sort it out.  I had a buggy time trying to get the `-server` and `-server -open` drivers to work, but the regular desktop driver worked great.
 
 # Future 
 
