@@ -1,0 +1,65 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: olamma
+  namespace: default
+  labels:
+    app: olamma
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: olamma
+  template:
+    metadata:
+      labels:
+        app: olamma
+    spec:
+      dnsPolicy: "None" # I was having some DNS issues, and found it easiest to just include the DNS policy
+      dnsConfig:
+        nameservers:
+          - 1.1.1.1 # Cloudflare's DNS
+        searches:
+          - svc.cluster.local
+      runtimeClassName: nvidia
+      containers:
+        - name: olamma
+          image: ollama/ollama:0.4.0-rc5 # Using the 4.0 dev image processing.  If not needed, use ollama/ollama
+          imagePullPolicy: Always
+          env:
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: all # Change if you need to isolate to a single specific GPU
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: all
+          #command: ["/bin/sh", "-c"]
+          #args: ["ollama run llama3.2"]
+          ports:
+            - containerPort: 11434
+          volumeMounts:
+            - name: olamma-config
+              mountPath: "/root/.ollama"
+      nodeName: NodeName # Change this to the name of the node your GPU is on
+      volumes:
+        - name: olamma-config
+          hostPath:
+              path: /mnt/ssd/ollama # Change this to the directory path you 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: olamma
+  namespace: default
+spec:
+  selector:
+    app: olamma
+  ports:
+    - name: olamma
+      protocol: TCP
+      port: 11434 
+      nodePort: 32125 # Change this if you want Olama to be on a different port
+  type: NodePort
+
