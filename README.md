@@ -13,8 +13,7 @@ I'm tinkering with GenAI in my homelab cluster and wasn't finding a lot of examp
 
 # Deployment Steps
 
-1. Ensure that you have the [Nivida Kuberentes plugin installed and enabled](https://github.com/NVIDIA/k8s-device-plugin).
-
+1. Ensure that you have the [Nvidia drivers installed on the client](https://ubuntu.com/server/docs/nvidia-drivers-installation) and [Nivida Kuberentes plugin installed and enabled](https://github.com/NVIDIA/k8s-device-plugin).
 2. Download [Ollama.yml](https://github.com/GoingOffRoading/Ollama-on-Kubernetes-w-Nvidia-GPU/blob/main/Ollama.yml) from this repo.
 3. Make changes to the deployment... Most importantly the local directory that Ollama will persist it's volume in, and the nodeName.
 4. Assuming you have kubectl installed and configured on this machine, run: `kubectl apply -f Ollama.yml`.
