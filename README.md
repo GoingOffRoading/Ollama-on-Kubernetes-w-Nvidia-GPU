@@ -1,6 +1,6 @@
 # Ollama-on-Kubernetes-w-Nvidia-GPU
 
-![Ollama](https://github.com/GoingOffRoading/Ollama-on-Kubernetes-w-Nvidia-GPU/blob/main/Ollama.png)
+![Ollama](https://github.com/GoingOffRoading/Ollama-on-Kubernetes-w-Nvidia-GPU/blob/main/Ollama1.png)
 
 # Abstraction
 
