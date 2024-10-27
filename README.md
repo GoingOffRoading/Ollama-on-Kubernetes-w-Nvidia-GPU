@@ -34,6 +34,10 @@ Also, take note that Ollama is being exposed for API calls at the API of the mac
 
     From the link in step 1, I used `sudo ubuntu-drivers install` and let Ubuntu sort it out.  I had a buggy time trying to get the `-server` and `-server -open` drivers to work, but the regular desktop driver worked great.
 
+* What GPU was this tested with?
+
+    PNY Nvidia RTX2000
+
 # Future 
 
 - [ ] Setup a PV/PVC
