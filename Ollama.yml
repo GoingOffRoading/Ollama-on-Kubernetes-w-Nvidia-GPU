@@ -39,11 +39,11 @@ spec:
           ports:
             - containerPort: 11434
           volumeMounts:
-            - name: olamma-config
+            - name: ollamma-config
               mountPath: "/root/.ollama"
       nodeName: NodeName # Change this to the name of the node your GPU is on
       volumes:
-        - name: olamma-config
+        - name: ollamma-config
           hostPath:
               path: /mnt/ssd/ollama # Change this to the directory path you 
 
@@ -60,6 +60,6 @@ spec:
     - name: olamma
       protocol: TCP
       port: 11434 
-      nodePort: 32125 # Change this if you want Olama to be on a different port
+      nodePort: 32125 # Change this if you want Ollama to be on a different port
   type: NodePort
 
